@@ -1,0 +1,108 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+<center>
+<h1>Football</h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 800px;
+            height: 500px;
+            background-color: #ffffff;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"id": "Diet (Nutrition) - Wikipedia", "label": "Diet (Nutrition) - Wikipedia", "shape": "dot", "size": 10}, {"id": "Buddhists", "label": "Buddhists", "shape": "dot", "size": 10}, {"id": "Jains", "label": "Jains", "shape": "dot", "size": 10}, {"id": "Theravada Buddhism", "label": "Theravada Buddhism", "shape": "dot", "size": 10}, {"id": "Gautama Buddha", "label": "Gautama Buddha", "shape": "dot", "size": 10}, {"id": "Jainism", "label": "Jainism", "shape": "dot", "size": 10}, {"id": "Gujarati Jain", "label": "Gujarati Jain", "shape": "dot", "size": 10}, {"id": "Pali", "label": "Pali", "shape": "dot", "size": 10}, {"id": "Sangha", "label": "Sangha", "shape": "dot", "size": 10}, {"id": "Buddha Shakyamuni", "label": "Buddha Shakyamuni", "shape": "dot", "size": 10}, {"id": "MN 140", "label": "MN 140", "shape": "dot", "size": 10}, {"id": "Digambara Jains", "label": "Digambara Jains", "shape": "dot", "size": 10}, {"id": "Indian", "label": "Indian", "shape": "dot", "size": 10}, {"id": "Moksha", "label": "Moksha", "shape": "dot", "size": 10}, {"id": "Girnar", "label": "Girnar", "shape": "dot", "size": 10}]);
+        edges = new vis.DataSet([{"arrows": "to", "from": "Diet (Nutrition) - Wikipedia", "to": "Buddhists", "weight": 1}, {"arrows": "to", "from": "Diet (Nutrition) - Wikipedia", "to": "Jains", "weight": 1}, {"arrows": "to", "from": "Buddhists", "to": "Theravada Buddhism", "weight": 1}, {"arrows": "to", "from": "Buddhists", "to": "Gautama Buddha", "weight": 1}, {"arrows": "to", "from": "Jains", "to": "Jainism", "weight": 1}, {"arrows": "to", "from": "Jains", "to": "Gujarati Jain", "weight": 1}, {"arrows": "to", "from": "Theravada Buddhism", "to": "Pali", "weight": 1}, {"arrows": "to", "from": "Theravada Buddhism", "to": "Sangha", "weight": 1}, {"arrows": "to", "from": "Gautama Buddha", "to": "Buddha Shakyamuni", "weight": 1}, {"arrows": "to", "from": "Gautama Buddha", "to": "MN 140", "weight": 1}, {"arrows": "to", "from": "Jainism", "to": "Digambara Jains", "weight": 1}, {"arrows": "to", "from": "Jainism", "to": "Indian", "weight": 1}, {"arrows": "to", "from": "Gujarati Jain", "to": "Moksha", "weight": 1}, {"arrows": "to", "from": "Gujarati Jain", "to": "Girnar", "weight": 1}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": false,
+            "type": "continuous"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+        
+        
+
+        
+
+        network = new vis.Network(container, data, options);
+
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>
