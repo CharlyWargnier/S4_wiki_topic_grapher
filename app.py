@@ -108,8 +108,8 @@ _
 
 - Select "Topic" via the left-hand toggle and type your keyword
 - It will return the closest matching Wikipedia page for that given string
-- Use that method with caution as currently there's no way to get the related page before calling the API.
-- So this can be costly if the selected page has tons of content!
+- Use that method with caution as currently there's no way to get the related page before calling the API
+- can be costly if the page has lots of text!
 
 _
 
