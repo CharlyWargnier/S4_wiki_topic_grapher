@@ -58,7 +58,7 @@ c30, c31, c32 = st.beta_columns([1, 3.3, 3])
 
 with c30:
     st.markdown("###")
-    st.image("Wikilogo.png", width=520)
+    st.image("wikilogo.png", width=520)
     st.header("")
 
 with c32:
