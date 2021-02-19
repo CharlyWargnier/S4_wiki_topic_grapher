@@ -58,7 +58,7 @@ c30, c31, c32 = st.beta_columns([1, 3.3, 3])
 
 with c30:
     st.markdown("###")
-    st.image("Wikilogo.png", width=520)
+    st.image("wikilogo.png", width=520)
     st.header("")
 
 with c32:
@@ -66,7 +66,7 @@ with c32:
     st.text("")
     st.text("")
     st.markdown(
-        "###### Original script by [JR Oakes](https://twitter.com/jroakes) - Ported to [![this is an image link](https://i.imgur.com/iIOA6kU.png)](https://www.streamlit.io/)&nbsp, with :heart: by [DataChaz](https://twitter.com/DataChaz) &nbsp [![this is an image link](https://i.imgur.com/thJhzOO.png)](https://www.buymeacoffee.com/cwar05)"
+        "###### Original script by JR Oakes - Ported to [![this is an image link](https://i.imgur.com/iIOA6kU.png)](https://www.streamlit.io/)&nbsp, with :heart: by [@DataChaz](https://twitter.com/DataChaz) &nbsp [![this is an image link](https://i.imgur.com/thJhzOO.png)](https://www.buymeacoffee.com/cwar05)"
     )
 
 
@@ -74,9 +74,9 @@ with st.beta_expander("ℹ️  - About this app ", expanded=True):
     st.write(
         """  
 
--   Wiki Topic Grapher leverages the power of [Google Natural Language API] (https://cloud.google.com/natural-language) to recursively retrieve entity relationships from any Wikipedia seed topic! 🔥
--   Get a network graph of these connected entities, save the graph as jpg or export the results ordered by salience to CSV!
--   The tool is still in Beta, with possible rough edges! [![Gitter](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/DataChaz/WikiTopic) for bug report, questions, or suggestions.
+-   Wiki Topic Grapher leverages the power of Google Natural Language API to recursively retrieve entity relationships from any Wikipedia seed topic! 🔥
+-   Get a visual mapping of these connected entities, then export the results to CSV!
+-   The tool is still in Beta. Head off to [![Gitter](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/DataChaz/WikiTopic) for feedback, questions, or suggestions.
 -   Kudos to JR Oakes for the original script - [buy the man a 🍺 here!](https://www.paypal.com/paypalme/codeseo)
 -   This app is free. If it's useful to you, you can [buy me a ☕](https://www.buymeacoffee.com/cwar05) to support my work! 🙏
 
@@ -99,33 +99,28 @@ with st.beta_expander("🛠️ - How to use it ", expanded=False):
 
     st.markdown(
         """  
-
 **URL:**
 
-- Paste a Wikipedia URL
-- Make sure the URL belongs to https://en.wikipedia.org/
-- Only English is currently supported. More languages to come! :)
-
-_
+    - Paste a Wikipedia URL.
+    - Make sure the URL belongs to https://en.wikipedia.org/
+    - Only English content is currently supported
 
 **Topic:**
 
-- Select "Topic" via the left-hand toggle and type your keyword
-- It will return the closest matching Wikipedia page for that given string
-- Use that method with caution as currently there's no way to get the related page before calling the API.
-- So this can be costly if the selected page has tons of content!
-
-_
+    - If "topic" is selected via the left-hand toggle, you'll just need to paste a keyword
+    - It will return the closest matching Wikipedia page for that given string
+    - This method is to be used with caution as there's currently no way to get the related page before calling the Google Natural language API.
+    - This can be costly with wider settings (high depth and high limit) if the chosen page has a ton of content!
 
 **Depth**:
-- The maximum number of entities to pull for each Wikipedia page
-- Depth 1 or 2 are the recommended settings
-- Depth 3 and above work yet it may not be usable nor legible!
 
-_
+    - The max number of entities to pull for each Wikipedia page
+    - We recommend depth 1 or 2 as default
+    - Depth 3 and above work but legibility issues may occur
 
 **Limit**:
-- The max number of entities to pull for each page
+
+    - The max number of entities to pull for each page
 
 	    """
     )
@@ -147,13 +142,9 @@ with st.beta_expander("🔎- SEO use cases ", expanded=False):
     st.markdown("---")
 
 
-with st.beta_expander("🧰 - Stack + To-Do's", expanded=False):
-
-    st.markdown("")
-
+with st.beta_expander("🧰 - Stack ", expanded=False):
     st.write(
         """  
-** Stack **
 
 -   100% Python! 🐍🔥
 -   [Google Natural Language API](https://cloud.google.com/natural-language)
@@ -161,26 +152,85 @@ with st.beta_expander("🧰 - Stack + To-Do's", expanded=False):
 -   [Networkx](https://networkx.org/)
 -   [Pyvis](https://pyvis.readthedocs.io/en/latest/)
 -   [Streamlit](https://www.streamlit.io/)
--   [Streamlit Components](https://www.streamlit.io/components)"""
-    )
-
-    st.markdown("")
-
-    st.write(
-        """  
-
-** To-Do's **
-
--   Add a budget estimator to estimate Google Cloud Language API costs
--   Add a multilingual option (currently English only)  
--   Add on-the-fly physics controls to the network graph 
--   Cache Google Natural language's data so users can experiment with depth & limit settings at no extra cost
--   Exception handling is still pretty broad at the moment and could be improved
+-   [Streamlit Components](https://www.streamlit.io/components)
 
 	    """
     )
 
     st.markdown("---")
+
+with st.beta_expander("📋 - To-Do's", expanded=False):
+
+    st.write(
+        """  
+-   Add a budget estimator to estimate Google Cloud Language API costs
+-   Allow users to tweak depth & limit settings once the API call has completed. That way users could experiment with these settings at no extra cost.
+-   Add a multilingual option (currently English only)  
+-   Exception handling is still pretty board and could be improved. s
+
+	    """
+    )
+
+    st.markdown("---")
+
+with st.beta_expander("ℹ️ - Todo - roadmap", expanded=True):
+
+    st.write(
+        """  
+-   Check st.table results
+-   Re-read all texts before deploying
+-   Deploy in private folder
+-   [testing] Add all test results in spreadsheet  
+-   [testing] Do tests with all the exceptions except FileNotFoundError
+-   [testing] When doing testing, check expections in "Errors to fix" + excel table created yesterday 
+-   Remove unsued section - erros to fix etc.
+-   Do a video!
+-   Redeploy in private folder!
+
+	    """
+    )
+
+with st.beta_expander("ℹ️ - Fixed ", expanded=False):
+
+    st.write(
+        """  
+
+-   Remove hat on logo!
+-   Remove both mentions "https://en.wikipedia.org/wiki/Diet_(nutrition)"
+-   Add st.markdown("---") to give space between elements
+-   SEO "use cases" lowercase?
+-   Check budget on GCP 1st!!!!!
+-   Make sure all hash are removed!
+-   Add a toggle to explain keywords do
+-   Start adding text
+-   Add default depth as 2 as a param
+-   Remove spinners - cache function i.e. Running recurse_entities
+-   Add Joahnnes' app
+-   Remove all hashed mentions
+-   Center chart
+-   Fix issue with PyVis format - see screenshot - https://imgur.com/a/lnskLcI
+-   Fix issue with PyVis format - Check components.html(source_code, height=1000, width=800)
+-   Rename "Karate" html
+-   Change "Football" mention
+-   Deploy on S4!!!
+-   Add Black formatting
+-   Add title tag + emoji  
+-   Find name and add logo (#1 WikiKGChecker!)
+-   Add rules for URLs
+-   Add timer from https://streamea-entity-analyzer.herokuapp.com/
+-   Add %age from https://streamea-entity-analyzer.herokuapp.com/-   fix index in table
+-   Remove spinners from cache functions
+-   Add all fields
+-   Deploy 01 - Deploy on S4
+-   Cached seemed OK as toggle doesn't remove the chart
+-   issue with table (doesn't display)
+-   display dataframe 
+-   add columns/layout
+-   Add download button formdataframe
+-   Add toggle + URLs RULES
+
+	    """
+    )
 
 st.markdown("## **① Upload your Google NLP key 🗝️**")
 with st.beta_expander("ℹ️ - How to create your credentials?", expanded=False):
@@ -626,6 +676,7 @@ st.set_option("deprecation.showPyplotGlobalUse", False)
 
 st.markdown("## **② Choose URL or topic 📝**")
 
+
 with st.beta_expander("ℹ️ - How Google Cloud pricing works ", expanded=False):
 
     st.write(
@@ -639,167 +690,167 @@ with st.beta_expander("ℹ️ - How Google Cloud pricing works ", expanded=False
 	    """
     )
 
+    # st.markdown("---")
+
     st.markdown("---")
 
 st.text("")
 
-try:
+c10, c0, c8, c1, c2, c3, c4, c5, c6 = st.beta_columns(
+    [0.10, 0.50, 0.10, 8, 0.10, 1.5, 0.10, 1.5, 0.10]
+)
 
-    c10, c0, c8, c1, c2, c3, c4, c5, c6 = st.beta_columns(
-        [0.10, 0.50, 0.10, 8, 0.10, 1.5, 0.10, 1.5, 0.10]
-    )
+with c0:
+    st.text("")
+    toggle = st.select_slider("", options=("URL", "Tpc"))
 
-    with c0:
-        st.text("")
-        toggle = st.select_slider("", options=("URL", "Tpc"))
+with c1:
 
-    with c1:
+    from re import search
 
-        from re import search
+    substring = "http://|https://"
 
-        substring = "http://|https://"
+    if toggle == "Tpc":
+        keyword = st.text_input(
+            "Enter a topic. (Returns the closest matching Wikipedia page for a given string)",
+            key=1,
+        )
+        if keyword:
+            if search(substring, keyword):
+                st.warning(
+                    "⚠️ Seems like you&#39re trying to paste a URL, switch to &#39URL&#39 mode!"
+                )
+            else:
+                st.markdown('Keyword is "' + str(keyword) + '"')
 
-        if toggle == "Tpc":
-            keyword = st.text_input(
-                "Enter a topic. (Returns the closest matching Wikipedia page for a given string)",
-                key=1,
-            )
-            if keyword:
-                if search(substring, keyword):
-                    st.warning(
-                        "⚠️ Seems like you&#39re trying to paste a URL. Switch to &#39URL&#39 mode?"
-                    )
-                    st.stop()
-                else:
-                    st.markdown('Keyword is "' + str(keyword) + '"')
+    elif toggle == "URL":
 
-        elif toggle == "URL":
-
-            keyword = st.text_input(
-                "Enter a Wikipedia URL",
-                key=2,
-            )
-
-            if keyword:
-                if search(substring, keyword):
-                    st.markdown('URL is "' + str(keyword) + '"')
-                else:
-                    st.warning(
-                        "⚠️ Please check the URL format as it's invalid. It needs to start with http:// or https://. If you wanted to paste a keyword, switch to 'Topic' mode."
-                    )
-                    st.stop()
-
-    with c3:
-        depth = st.number_input(
-            "Depth", step=1, value=1, min_value=1, max_value=3, key=1
+        keyword = st.text_input(
+            "Enter a Wikipedia URL",
+            # "https://en.wikipedia.org/wiki/Diet_(nutrition)",
+            # "https://en.wikipedia.org/wiki/Nico_Ditch",
+            key=2,
         )
 
-    with c5:
-        limit = st.number_input(
-            "Limit", step=1, value=1, min_value=1, max_value=3, key=2
-        )
+        if keyword:
+            if search(substring, keyword):
+                st.markdown('URL is "' + str(keyword) + '"')
+            else:
+                st.warning(
+                    "⚠️ URL format is invalid, please check. it needs to start with http:// or https://"
+                )
 
-    c3, c4 = st.beta_columns(2)
+with c3:
+    depth = st.number_input("Depth", step=1, min_value=2, max_value=3, key=1)
 
-    with c3:
-        st.text("")
-        st.text("")
-        cButton = st.beta_container()
+with c5:
+    limit = st.number_input("Limit", step=1, min_value=2, max_value=5, key=2)
 
-    with c4:
-        st.text("")
-        c30 = st.beta_container()
+c3, c4 = st.beta_columns(2)
 
-    button1 = cButton.button("✨ Happy with costs, get me the data!")
+with c3:
+    st.text("")
+    st.text("")
+    cButton = st.beta_container()
 
-    if not button1 and not uploaded_file:
-        st.stop()
-    elif not button1 and uploaded_file:
-        st.stop()
-    elif button1 and not uploaded_file:
-        c.warning("◀️ Add credentials 1st")
-        st.stop()
-    else:
-        pass
+with c4:
+    st.text("")
+    c30 = st.beta_container()
 
-    if button1:
+button1 = cButton.button("✨ Happy with costs, get me the data!")
 
-        import time
+if not button1 and not uploaded_file:
+    st.stop()
+elif not button1 and uploaded_file:
+    st.stop()
+elif button1 and not uploaded_file:
+    c.error("◀️ Add credentials 1st")
+    st.stop()
+else:
+    pass
 
-        latest_iteration = st.empty()
-        bar = st.progress(0)
+if button1:
 
-        for i in range(100):
-            latest_iteration.markdown(f"Sending your request ({i+1} % Completed)")
-            bar.progress(i + 1)
-            time.sleep(0.05)
+    import time
 
-    data, G = recurse_entities(keyword, depth=depth, limit=limit)
+    latest_iteration = st.empty()
+    bar = st.progress(0)
 
-    st.markdown("## ** Results **")
+    for i in range(100):
+        latest_iteration.markdown(f"Sending your request ({i+1} % Completed)")
+        bar.progress(i + 1)
+        time.sleep(0.05)
 
-    with st.beta_expander("Toggle table  ", expanded=True):
+data, G = recurse_entities(keyword, depth=depth, limit=limit)
 
-        st.text("")
+st.markdown("## **③ Check results! 🙌  **")
 
-        c30, c31, c32 = st.beta_columns(3)
+with st.beta_expander("Toggle table  ", expanded=True):
 
-        with c30:
-            c1 = st.beta_container()
-        with c31:
-            c2 = st.beta_container()
+    st.text("")
 
-        cm = sns.light_palette("green", as_cmap=True)
-        df = pd.DataFrame(data).sort_values(by="salience", ascending=False)
-        df = df.reset_index()
-        df.index += 1
-        df = df.drop(["index"], axis=1)
-        format_dictionary = {
-            "salience": "{:.1%}",
-        }
-        dfStyled = df.style.background_gradient(cmap=cm)
-        dfStyled2 = dfStyled.format(format_dictionary)
-        st.table(dfStyled2)
+    c30, c31, c32 = st.beta_columns(3)
 
-        try:
-            import base64
+    with c30:
+        c1 = st.beta_container()
+    with c31:
+        c2 = st.beta_container()
 
-            csv = df.to_csv(index=False)
-            b64 = base64.b64encode(csv.encode()).decode()
-            href = f'<a href="data:file/csv;base64,{b64}" download="listViewExport.csv">** - Download data to CSV 🎁 **</a>'
-            c1.markdown(href, unsafe_allow_html=True)
-        except NameError:
-            print("wait")
+    cm = sns.light_palette("green", as_cmap=True)
+    df = pd.DataFrame(data).sort_values(by="salience", ascending=False)
+    df = df.reset_index()
+    df.index += 1
+    df = df.drop(["index"], axis=1)
+    format_dictionary = {
+        "salience": "{:.1%}",
+    }
+    dfStyled = df.style.background_gradient(cmap=cm)
+    dfStyled2 = dfStyled.format(format_dictionary)
+    st.table(dfStyled2)
 
-    g4 = net.Network(
-        directed=True,
-        height="1000px",
-        width="1300px",
-        notebook=True,
-    )
+    try:
+        import base64
 
-    c1, c2, c3 = st.beta_columns([1, 3, 2])
+        csv = df.to_csv(index=False)
+        b64 = base64.b64encode(csv.encode()).decode()
+        href = f'<a href="data:file/csv;base64,{b64}" download="listViewExport.csv">** - Download data to CSV 🎁 **</a>'
+        c1.markdown(href, unsafe_allow_html=True)
+    except NameError:
+        print("wait")
 
-    with c2:
-        g4.from_nx(G)
-        g4.show("wikiOutput.html")
-        HtmlFile = open("file.html", "r")
-        source_code = HtmlFile.read()
-        components.html(source_code, height=1000, width=1000)
+g4 = net.Network(
+    directed=True,
+    height="1000px",
+    width="1300px",
+    notebook=True,
+)
+
+c1, c2, c3 = st.beta_columns([1, 3, 2])
+
+with c2:
+    g4.from_nx(G)
+    g4.show("wikiOutput.html")
+    HtmlFile = open("file.html", "r")
+    source_code = HtmlFile.read()
+    components.html(source_code, height=1000, width=1000)
 
 
-# except FileNotFoundError:
-except Exception as e:
+st.stop()
+
+'''
+except FileNotFoundError:
 
     st.warning(
         f"""
-            🤔 ** Snap! **
-            have you checked that:
-             -  The credentials JSON file you have added is valid?
-             -  Google Cloud's billing is enabled?
-             -  The URL you typed is a valid Wikipedia URL (that is, if you selected the "URL" option)?
+            🤔 **Oh! Snap! **
+            Please make sure that:
+             -  The credentials JSON file you have added is valid
+             -  The Google Cloud billing has been enabled (billing issues trigger 403 errors)
+             -  The Add wikipedia http check - warning if 404
 
-            If this keeps happening -> [![Gitter](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/DataChaz/WikiTopic)
+            If this keeps happening, [reach me out on Gitter!](https://gitter.im/DataChaz/WikiTopic).
             
             """
     )
+    st.stop()
+'''
