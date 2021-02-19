@@ -58,7 +58,7 @@ c30, c31, c32 = st.beta_columns([1, 3.3, 3])
 
 with c30:
     st.markdown("###")
-    st.image("Wikilogo.png", width=520)
+    st.image("wikilogo.png", width=520)
     st.header("")
 
 with c32:
@@ -783,8 +783,7 @@ try:
     with c2:
         g4.from_nx(G)
         g4.show("wikiOutput.html")
-        HtmlFile = open("wikiOutput.html", "r")
-        #HtmlFile = open("file.html", "r")
+        HtmlFile = open("file.html", "r")
         source_code = HtmlFile.read()
         components.html(source_code, height=1000, width=1000)
 
