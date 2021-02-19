@@ -174,6 +174,7 @@ with st.beta_expander("🧰 - Stack + To-Do's", expanded=False):
 -   Add a budget estimator to estimate Google Cloud Language API costs
 -   Add a multilingual option (currently English only)  
 -   Add on-the-fly physics controls to the network graph 
+-   Cache Google Natural language's data so users can experiment with depth & limit settings at no extra cost
 -   Exception handling is still pretty broad at the moment and could be improved
 
 	    """
@@ -181,7 +182,7 @@ with st.beta_expander("🧰 - Stack + To-Do's", expanded=False):
 
     st.markdown("---")
 
-st.markdown("## **① Upload your Google NLP key **")
+st.markdown("## **① Upload your Google NLP key 🗝️**")
 with st.beta_expander("ℹ️ - How to create your credentials?", expanded=False):
 
     st.write(
@@ -623,7 +624,7 @@ def plot_entity_branches(G, w=10, h=10, c=1, font_size=14, filename=None):
 
 st.set_option("deprecation.showPyplotGlobalUse", False)
 
-st.markdown("## **② Choose a URL or a topic **")
+st.markdown("## **② Choose URL or topic 📝**")
 
 with st.beta_expander("ℹ️ - How Google Cloud pricing works ", expanded=False):
 
@@ -735,15 +736,45 @@ try:
 
     data, G = recurse_entities(keyword, depth=depth, limit=limit)
 
-    st.markdown("## **③ Check results! ✨**")
+    st.markdown("## ** Results **")
 
-    st.text("")
+    with st.beta_expander("Toggle table  ", expanded=True):
+
+        st.text("")
+
+        c30, c31, c32 = st.beta_columns(3)
+
+        with c30:
+            c1 = st.beta_container()
+        with c31:
+            c2 = st.beta_container()
+
+        cm = sns.light_palette("green", as_cmap=True)
+        df = pd.DataFrame(data).sort_values(by="salience", ascending=False)
+        df = df.reset_index()
+        df.index += 1
+        df = df.drop(["index"], axis=1)
+        format_dictionary = {
+            "salience": "{:.1%}",
+        }
+        dfStyled = df.style.background_gradient(cmap=cm)
+        dfStyled2 = dfStyled.format(format_dictionary)
+        st.table(dfStyled2)
+
+        try:
+            import base64
+
+            csv = df.to_csv(index=False)
+            b64 = base64.b64encode(csv.encode()).decode()
+            href = f'<a href="data:file/csv;base64,{b64}" download="listViewExport.csv">** - Download data to CSV 🎁 **</a>'
+            c1.markdown(href, unsafe_allow_html=True)
+        except NameError:
+            print("wait")
 
     g4 = net.Network(
         directed=True,
-        heading="",
-        height="800px",
-        width="800px",
+        height="1000px",
+        width="1300px",
         notebook=True,
     )
 
@@ -753,39 +784,12 @@ try:
         g4.from_nx(G)
         g4.show("wikiOutput.html")
         HtmlFile = open("wikiOutput.html", "r")
+        #HtmlFile = open("file.html", "r")
         source_code = HtmlFile.read()
         components.html(source_code, height=1000, width=1000)
 
 
-    c30, c31, c32 = st.beta_columns(3)
-
-    with c30:
-        c1 = st.beta_container()
-    with c31:
-        c2 = st.beta_container()
-
-    cm = sns.light_palette("green", as_cmap=True)
-    df = pd.DataFrame(data).sort_values(by="salience", ascending=False)
-    df = df.reset_index()
-    df.index += 1
-    df = df.drop(["index"], axis=1)
-    format_dictionary = {
-        "salience": "{:.1%}",
-    }
-    dfStyled = df.style.background_gradient(cmap=cm)
-    dfStyled2 = dfStyled.format(format_dictionary)
-    st.table(dfStyled2)
-
-    try:
-        import base64
-
-        csv = df.to_csv(index=False)
-        b64 = base64.b64encode(csv.encode()).decode()
-        href = f'<a href="data:file/csv;base64,{b64}" download="listViewExport.csv">** - Download data to CSV 🎁 **</a>'
-        c1.markdown(href, unsafe_allow_html=True)
-    except NameError:
-        print("wait")
-
+# except FileNotFoundError:
 except Exception as e:
 
     st.warning(
@@ -794,7 +798,7 @@ except Exception as e:
             have you checked that:
              -  The credentials JSON file you have added is valid?
              -  Google Cloud's billing is enabled?
-             -  The URL you typed is a valid Wikipedia URL (that is, if you selected the "URL" option)?            
+             -  The URL you typed is a valid Wikipedia URL (that is, if you selected the "URL" option)?
 
             If this keeps happening -> [![Gitter](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/DataChaz/WikiTopic)
             
