@@ -49,10 +49,6 @@ def _max_width_():
 _max_width_()
 
 
-#######################
-
-# c30, c32 = st.beta_columns(2)
-
 c30, c31, c32 = st.beta_columns([1, 3.3, 3])
 
 
@@ -159,7 +155,6 @@ with st.beta_expander("🧰 - Stack + To-Do's", expanded=False):
 -   [Google Natural Language API](https://cloud.google.com/natural-language)
 -   [PyWikibot](https://www.mediawiki.org/wiki/Manual:Pywikibot)
 -   [Networkx](https://networkx.org/)
--   [Pyvis](https://pyvis.readthedocs.io/en/latest/)
 -   [Streamlit](https://www.streamlit.io/)
 -   [Streamlit Components](https://www.streamlit.io/components)"""
     )
@@ -755,7 +750,6 @@ try:
         HtmlFile = open("wikiOutput.html", "r")
         source_code = HtmlFile.read()
         components.html(source_code, height=1000, width=1000)
-
 
     c30, c31, c32 = st.beta_columns(3)
 
