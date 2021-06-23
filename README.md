@@ -1,13 +1,14 @@
 
 # Wiki Topic Grapher
 
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/charlywargnier/s4_wiki_topic_grapher/main/app.py)
-
 Leverage the power of Google [#NLP](https://threadreaderapp.com/hashtag/NLP) to retrieve entity relationships from Wikipedia URLs or topics!
 
--   Get interactive graphs of connected entities
-   
+-   Get interactive graphs of connected entities  
 -   Export results with entity types and salience to CSV!
+
+_________________
+
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/charlywargnier/s4_wiki_topic_grapher/main/app.py)
 
 
 ### Use cases
